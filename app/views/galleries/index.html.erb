@@ -1,6 +1,9 @@
 <h2>Galleries</h2>
 	<ul>
 	<% @galleries.each do |gallery|%>
+
 		<li><%= gallery.name %></li>
+		<%= gallery.description %><br>&nbsp;
+	
+	<%end%>
 	</ul>
-<%end%>
