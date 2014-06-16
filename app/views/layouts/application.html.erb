@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pixtr</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+<h1>Pixtr</h1>
+
+<!-- #rails will grab and inject the template for this action into the spot where yield appears below. It saves us having to type in all the header and footer junk.  -->
+<%= yield %>
+
+</body>
+</html>
