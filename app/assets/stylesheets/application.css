@@ -13,3 +13,7 @@
  *= require_tree .
  *= require_self
  */
+
+h2 red_alert {
+	color: red;
+}

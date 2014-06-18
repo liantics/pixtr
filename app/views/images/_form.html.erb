@@ -1,0 +1,16 @@
+<!-- form to edit and create an image -->
+<!-- in a specific gallery -->
+
+<%= form_for [@gallery, @image] do |f| %>
+
+	<%= render "error_messages", target: @image  %>
+
+	<div><!--using a div for a bit of layout niceness, not actually needed -->
+	  <%= f.label :url, "Enter an image URL :" %>
+	  <%= f.text_field :url %><br />
+	</div>
+
+	<div><!--using a div for a bit of layout niceness, not actually needed -->
+	  <%= f.submit "submit" %>
+	</div>
+<% end %>

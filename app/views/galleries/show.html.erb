@@ -1,6 +1,17 @@
 <h2>Welcome to the <%= @gallery.name %> Gallery</h2>
+
 <p><%= @gallery.description %></p>
-<p><%= link_to "Edit a gallery", "/galleries/#{@gallery.id}/edit" %></p>
+<p><%= link_to "Home", root_path %>, <%= link_to "Edit gallery", [:edit, @gallery] %>, <%= link_to "Delete gallery", @gallery, method: :delete %> </p>
 
 <!-- rails is being nice to us, it will parse this to run a delete as a result of our action -->
-<p><%= link_to "Delete gallery", "/galleries/#{@gallery.id}", method: :delete %> </p>
+<p><%= link_to "Add an image", [:new, @gallery, :image] %> </p>
+
+<p>
+	<% @gallery.images.each do |image| %>
+	<%= image_tag image.url%>
+	<%= link_to " Delete this image", [@gallery, image], method: :delete %> or	<%= link_to " edit this image", [:edit, @gallery, image] %><br>
+
+	
+
+<%end%>
+</p>
