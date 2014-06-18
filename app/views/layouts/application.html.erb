@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Pixtr</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+	  <title>Pixtr</title>
+	  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+	  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+	  <%= csrf_meta_tags %>
+	</head>
+	<body>
+		<h1><%= link_to "Pixtr", root_path %></h1>
 
-<h1>Pixtr</h1>
+		<%if signed_in? %>
+			You are signed in as <%= current_user.email%>
 
-<!-- #rails will grab and inject the template for this action into the spot where yield appears below. It saves us having to type in all the header and footer junk.  -->
-<%= yield %>
+		<% else %>
+			<p><%= link_to "Sign in", sign_in_path %></p>
+			or
+			<p><%= link_to "Sign up", sign_up_path %></p>
+		<% end %>
 
-</body>
+		
+	
+
+		<%= yield %>
+
+	</body>
 </html>

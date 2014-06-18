@@ -24,6 +24,8 @@
 # The following does the same thing as ALL the lines above, and resets the root directory to the galleries root
 Rails.application.routes.draw do
   root to: "galleries#index"
+  
+
 
   #white lisitng the routes we ARE allowing
 
@@ -34,5 +36,14 @@ Rails.application.routes.draw do
     resources :images, only: [:new, :create, :edit, :update, :destroy]
     #rule of thumb: ONLY NEST ONCE
   end
+
+  resources :users, only: [:create]
+  get "/sign_up", to: "users#new"
+
+  resource :session, only: [:create, :destroy] #note: there's only ONE session for a user, so this MUST be singular. It's one of the exceptions in routes.
+  get "/sign_in", to: "sessions#new"
+  get "/sign_out", to: "sessions#delete"
+
+  
 
 end
