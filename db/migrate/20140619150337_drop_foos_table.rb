@@ -1,4 +1,5 @@
 class DropFoosTable < ActiveRecord::Migration
-  def change
+  def up
+    drop_table :foos
   end
 end
