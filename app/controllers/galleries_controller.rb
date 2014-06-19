@@ -14,17 +14,8 @@ class GalleriesController < ApplicationController
 	end
 
 	def create
-		gallery = Gallery.new(gallery_params) #initialize a new gallery instance with all the stuff typed in by the user
-		if gallery.save #returns nil if save is unsuccessful
-			#a not nil response means the save worked, send user to the new gallery page
-			redirect_to "/galleries/#{gallery.id}"
-		else
-			#save returned nil, so saving failed
-			#render saves any data from fields that have been filled in.
-			#we can now set a variable to pass the data to the view.
-			@gallery = gallery
-			render :new #renders the "new" template (the view new.html.erb) page, but doesn't redirect
-		end
+		gallery = Gallery.create(gallery_params)
+		redirect_to "/galleries/#{gallery.id}"
 	end
 
 	def edit
@@ -32,13 +23,9 @@ class GalleriesController < ApplicationController
 	end
 
 	def update
-		@gallery = Gallery.find(params[:id])
-		if @gallery.update(gallery_params)
-			redirect_to @gallery
-		else
-			render :edit
-		end
-
+		gallery = Gallery.find(params[:id])
+		gallery.update(gallery_params)
+		redirect_to "/galleries/#{gallery.id}"
 	end
 
 	def destroy

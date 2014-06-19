@@ -13,7 +13,10 @@
  *= require_tree .
  *= require_self
  */
+<<<<<<< HEAD
 
 .red_alert {
 	color: red;
 }
+=======
+>>>>>>> parent of 251ac96... Add error handling

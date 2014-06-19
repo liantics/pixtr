@@ -24,15 +24,7 @@
 # The following does the same thing as ALL the lines above, and resets the root directory to the galleries root
 Rails.application.routes.draw do
   root to: "galleries#index"
-
   #white lisitng the routes we ARE allowing
 
-  resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
-    # anything inside the do block on a resource in the routes.rb
-    #knows it's nested under the path of things in the line that starts the block, 
-    # so it fills in the /galleries/:id ... portion of the path for us
-    resources :images, only: [:new, :create, :edit, :update, :destroy]
-    #rule of thumb: ONLY NEST ONCE
-  end
-
+  resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] 
 end
