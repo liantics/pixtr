@@ -1,4 +1,6 @@
 <h2>Welcome to the <%= @gallery.name %> Gallery</h2>
+<p>Proudly owned by <%= @gallery.user.email %> </p>
+
 <p><%= @gallery.description %></p>
 <p><%= link_to "Edit a gallery", "/galleries/#{@gallery.id}/edit" %></p>
 
