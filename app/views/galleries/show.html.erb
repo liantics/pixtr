@@ -1,8 +1,12 @@
 <h2>Welcome to the <%= @gallery.name %> Gallery</h2>
 <p>Proudly owned by <%= @gallery.user.email %> </p>
+<p>user id ... <%= @gallery.user.id %> </p>
 
-<p><%= @gallery.description %></p>
-<p><%= link_to "Edit a gallery", "/galleries/#{@gallery.id}/edit" %></p>
+<p>
+	 <% if current_user.id == @gallery.user.id %></p>
 
-<!-- rails is being nice to us, it will parse this to run a delete as a result of our action -->
-<p><%= link_to "Delete gallery", "/galleries/#{@gallery.id}", method: :delete %> </p>
+	 	<p><%= link_to "Edit a gallery", [:edit, @gallery] %></p>
+
+	 	<!-- rails is being nice to us, it will parse this to run a delete as a result of our action -->
+	 	<p><%= link_to "Delete gallery", @gallery, method: :delete %> </p>
+	 <% end %>
