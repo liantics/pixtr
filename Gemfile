@@ -32,6 +32,9 @@ gem 'monban-generators'
 # The gem that carries all the authentication-y code goodness
 gem 'monban'
 
+# Allows features on heroku such as static asset serving and logging
+gem 'rails_12factor', group: :production
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
