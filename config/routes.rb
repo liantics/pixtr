@@ -23,6 +23,8 @@
   
 # The following does the same thing as ALL the lines above, and resets the root directory to the galleries root
 Rails.application.routes.draw do
+  resource :session, only: [:new, :create, :destroy]
+  resources :users, only: [:new, :create]
   root to: "galleries#index"
   #white lisitng the routes we ARE allowing
 
