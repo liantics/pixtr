@@ -1,46 +1,52 @@
 class GalleriesController < ApplicationController
-	def index
-		#use the model name, not the db name - singular
-		#
-		@galleries = Gallery.all
-	end
+  def index
+    @galleries = Gallery.all
+  end
 
-	def show
-		@gallery = Gallery.find(params[:id])
-	end
+  def show
+    @gallery = Gallery.find(params[:id])
+  end
 
-	def new
-		@gallery = Gallery.new
-	end
+  def new
+    @gallery = Gallery.new
+  end
 
-	def create
-		gallery = Gallery.create(gallery_params)
-		redirect_to "/galleries/#{gallery.id}"
-	end
+  def create
+    @gallery = Gallery.new(gallery_params.
+      merge(user_id: current_user.id)
+    )
+    if @gallery.save
+      redirect_to @gallery
+    else
+      render :new
+    end
+  end
 
-	def edit
-		@gallery = Gallery.find(params[:id])
-	end
+  def edit
+    @gallery = Gallery.find(params[:id])
+  end
 
-	def update
-		gallery = Gallery.find(params[:id])
-		gallery.update(gallery_params)
-		redirect_to "/galleries/#{gallery.id}"
-	end
+  def update
+    @gallery = Gallery.find(params[:id])
+    if @gallery.update(gallery_params)
+      redirect_to @gallery
+    else
+      render :edit
+    end
+  end
 
-	def destroy
-		gallery = Gallery.find(params[:id])
-		gallery.destroy
-		redirect_to "/"
-	end
+  def destroy
+    gallery = Gallery.find(params[:id])
+    gallery.destroy
+    redirect_to root_path
+  end
 
-private
-	def gallery_params
-    	params.require(:gallery).permit(
-       		:name, 
-    		:description, #always add this comma, so git won't track this unchanged line when you have to add a comma after adding a new attribute to the list
-    		) #white lists the keys we want to accept
- 	end
+  private
 
-
+  def gallery_params
+    params.require(:gallery).permit(
+      :name,
+      :description,
+    )
+  end
 end

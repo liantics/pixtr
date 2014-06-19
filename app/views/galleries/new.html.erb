@@ -1,6 +1,7 @@
 <h2>Add a New Gallery</h2>
 
 <%= form_for @gallery, url: "/galleries" do |f| %>
+ <%= render "error_messages", target: @gallery %>
 	<div> <!--using a div for a bit of layout niceness, not actually needed -->
 	  <%= f.label :name %>:
 	  <%= f.text_field :name %><br />

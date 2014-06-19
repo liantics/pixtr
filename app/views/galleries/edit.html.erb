@@ -1,7 +1,7 @@
 <h2>Edit a Gallery</h2>
 
 <%= form_for @gallery, url: "/galleries/#{@gallery.id}" do |f| %>
-
+	 <%= render "error_messages", target: @image %>
 	<div> 
 	  <%= f.label :name %>:
 	  <%= f.text_field :name %><br />
