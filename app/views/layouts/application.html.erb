@@ -10,6 +10,20 @@
 
 <h1>Pixtr</h1>
 
+<% if signed_in? %>
+	<%= button_to "Sign out", :session, method: :delete %> 
+	
+<% else %>
+
+	<!-- We don't know who they are, so can't specify a particular user, thus use symbols, instead. You can figure out what symbols. This corresponds to new_session_path in http://localhost.../rails/info/routes-->
+	<p><%= link_to "Sign up", [:new, :user] %> </p>
+
+	<!--This corresponds to new_session_path in http://localhost.../rails/info/routes-->
+	<p><%= link_to "Sign in", [:new, :session] %> </p>
+	
+
+<% end %>
+
 <!-- #rails will grab and inject the template for this action into the spot where yield appears below. It saves us having to type in all the header and footer junk.  -->
 <%= yield %>
 

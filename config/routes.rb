@@ -25,8 +25,11 @@
 Rails.application.routes.draw do
   resource :session, only: [:new, :create, :destroy]
   resources :users, only: [:new, :create]
+  
   root to: "galleries#index"
   #white lisitng the routes we ARE allowing
 
   resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] 
+  resources :images, only: [:new, :create, :edit, :update]
+
 end

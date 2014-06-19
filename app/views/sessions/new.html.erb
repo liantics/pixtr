@@ -1,4 +1,13 @@
+<!-- 
+# When there's no model that a form_for can use, you can pass it a symbol.
+# This is a way to make it so your page can work, even if the symbol has no meaning.
+# Need to specify a url in the form_for spec, because the symbol isn't an object, and thus
+# isn't carrying all the "stuff" that is part of a session, such as the path needed for 
+#the form action.
+ -->
 <%= form_for :session, url: session_path do |form| %>
+
+
   <div>
     <%= form.label :email %>
     <%= form.email_field :email %>

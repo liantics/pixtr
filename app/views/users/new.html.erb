@@ -1,4 +1,7 @@
 <%= form_for @user do |form| %>
+
+  <%= render "error_messages", target: @user %> <!-- pass the target to the partial -->
+
   <div>
     <%= form.label :email %>
     <%= form.email_field :email %>
