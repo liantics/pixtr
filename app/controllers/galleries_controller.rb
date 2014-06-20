@@ -34,6 +34,7 @@ class GalleriesController < ApplicationController
     # @gallery = Gallery.user.find(params_with_user_id)
     # but we want to narrow the scope to the galleries 
     # owned by the currrent user
+    #so we use the current user info provided by the monban auth code
     @gallery = current_user.galleries.find(params[:id]) #.find gets ONLY 1 gallery
   end
 

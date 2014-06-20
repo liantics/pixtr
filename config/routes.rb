@@ -29,7 +29,8 @@ Rails.application.routes.draw do
   root to: "galleries#index"
   #white lisitng the routes we ARE allowing
 
-  resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] 
-  resources :images, only: [:new, :create, :edit, :update]
+  resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
+    resources :images, only: [:new, :create, :edit, :update, :destroy]
+  end
 
 end
