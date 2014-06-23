@@ -2,8 +2,13 @@
 <p>Proudly owned by <%= @gallery.user.email %>
 
 <% @gallery.images.each do |image| %>
-		<p> <img src="<%= image.url %>"></p>
-		<p> <%= link_to "Edit this image", [:edit, image] %></p>
+
+	<%= link_to(image) do %>
+		<%= image_tag image.url %>
+	
+		
+	<%end%>
+
 		<p> <%= link_to "Delete this image", [@gallery, image], method: :delete %></p>
 		<p>Created at <%= time_ago_in_words image.created_at %> ago</p>
 <% end %>

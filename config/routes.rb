@@ -33,6 +33,6 @@ Rails.application.routes.draw do
     resources :images, only: [:new, :create, :destroy]
   end
 
-  resources :images, only: [:edit, :update]
+  resources :images, only: [:show, :edit, :update]
 
 end

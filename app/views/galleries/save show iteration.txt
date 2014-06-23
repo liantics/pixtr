@@ -1,5 +1,0 @@
-<% @gallery.images.each do |image| %>
-<%= image_tag image_url %>
-<%= link_to "Edit this image", [:edit, @gallery, image] %>
-Created at <%= time_ago_in_words image.created_at %> ago
-<% end %>
