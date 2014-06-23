@@ -1,1 +1,7 @@
-<%= render "form" %>
+
+<%= form_for @image do |form| %>
+
+	<%= render "form", form: form %>
+
+	<%= form.submit "Edit Image" %>
+<% end %>

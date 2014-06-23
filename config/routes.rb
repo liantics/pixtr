@@ -30,7 +30,9 @@ Rails.application.routes.draw do
   #white lisitng the routes we ARE allowing
 
   resources :galleries, only: [:show, :new, :create, :edit, :update, :destroy] do
-    resources :images, only: [:new, :create, :edit, :update, :destroy]
+    resources :images, only: [:new, :create, :destroy]
   end
+
+  resources :images, only: [:edit, :update]
 
 end

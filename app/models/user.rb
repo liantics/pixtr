@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base
 	has_many :galleries
+	has_many :images, through: :galleries
 
 	#make a validates presence constraint in active record for every not null contstraint in the db schema
 	

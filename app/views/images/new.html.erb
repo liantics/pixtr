@@ -1,1 +1,9 @@
-<%= render "form" %>
+
+<%= form_for [@gallery, @image] do |form| %>
+
+  <%= render "form", form: form %>
+  
+  <%= form.submit "Create Image" %>
+
+
+<% end %>
