@@ -1,0 +1,17 @@
+note
+
+Associating a foreign key with an object:
+
+Two ways - has_many and belongs_to
+
+Gallery   /
+Gallery --  Image
+          \
+
+Build the image through the gallery
+gallery.images.new()
+
+or merge it in manually
+image.new(image_params), where image_params merges the gallery_id
+
+

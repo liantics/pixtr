@@ -2,6 +2,7 @@
 
 
 	<%= form_for @gallery, url: "/galleries/#{@gallery.id}" do |f| %>
+		<%= render "error_messages", target: @gallery %>
 		<div> 
 		  <%= f.label :name %>:
 		  <%= f.text_field :name %><br />

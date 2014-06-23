@@ -1,7 +1,10 @@
 class ImagesController < ApplicationController
   def show
     @image = Image.find(params[:id])
+    @comment = Comment.new
+    @comments = @image.comments.recent
   end
+
 
   def new
     @gallery = current_user.galleries.find(params[:gallery_id])
@@ -52,12 +55,11 @@ class ImagesController < ApplicationController
 
   private
 
+
+
   def image_params
     params.
       require(:image).
       permit(:url)
-      # deleting this merge, now that we're no longer passing around the @gallery
-      # instance variable, and thus the gallery id isn't coming back in the url
-      # merge(gallery_id: params[:gallery_id])
   end
 end
