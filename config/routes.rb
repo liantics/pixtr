@@ -35,12 +35,13 @@ Rails.application.routes.draw do
 
   resources :images, only: [:show, :edit, :update] do 
     resources :comments, only: [:create] #since we already have the form, and new is just for rendering a form, we don't need a "new" route.
+    resources :group_images, only: [:create] 
   end
 
-  resources :groups, only: [:new, :create, :index] do #order of routes doesn't matter
+  resources :groups, only: [:new, :create, :index, :show] do #order of routes doesn't matter
     resources :group_memberships, only: [:create]
   end
 
-  resources :group_memberships, only: [:index]
+  
 
 end

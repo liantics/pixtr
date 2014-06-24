@@ -2,6 +2,12 @@
 
 <img src="<%= @image.url %>" >
 <%= link_to "Back to Gallery", :back %>
+
+<%= form_for @image do |form| %>
+<%=form.label "Groups"%>
+<%= form.collection_check_boxes :group_ids, @groups, :id, :name%>
+<%=form.submit "Update groups"%>
+<%end%>
 <p>
 <!-- Even though this is for creating a comment, and is passing *to* the *comments* controller, -->
 <!-- this form only knows where it came from, which is the *images* controller-->

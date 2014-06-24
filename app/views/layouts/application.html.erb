@@ -10,9 +10,11 @@
 
 <h1>Pixtr</h1>
 
+<p>
 <% if signed_in? %>
-	<%= button_to "Sign out", :session, method: :delete %> 
-	<%= link_to "Create a new group", [:new, :group] %>
+	
+	<span class="roomy"><%= button_to "Sign out", :session, method: :delete %> </span>
+	<span class="roomy"><%= link_to "Create a new group", [:new, :group] %></span>
 	
 <% else %>
 
@@ -24,6 +26,7 @@
 	
 
 <% end %>
+</p>
 
 <!-- #rails will grab and inject the template for this action into the spot where yield appears below. It saves us having to type in all the header and footer junk.  -->
 <%= yield %>
