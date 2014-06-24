@@ -2,6 +2,8 @@ class User < ActiveRecord::Base
 	has_many :galleries
 	has_many :images, through: :galleries
 	has_many :comments, through: :images
+	has_many :group_memberships
+	has_many :groups, through: :group_memberships
 
 	#make a validates presence constraint in active record for every not null contstraint in the db schema
 	
@@ -10,5 +12,9 @@ class User < ActiveRecord::Base
 	#don't use multiple validations keywords for the same column
 
 	validates :password_digest, presence: true
+
+	def member?(group)
+		group_ids.include?(group.id)
+	end
 
 end

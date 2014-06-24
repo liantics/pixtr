@@ -1,7 +1,16 @@
 <ul>
 
 <% @groups.each do |group| %>
-<li><%= group.name %>  - <%= group.description %></li>
+<p><li><%= group.name %>  - <%= group.description %> 
+
+	<!-- [group, @group_membership] array adds the group id to the url, makes the path group/group:id/group_memberships-->
+
+	<%= form_for [group, @group_membership] do |form| %> 
+		<% if !current_user.member?(group)%>
+		<%= form.submit "Join this group" %>
+		<% end %>
+	<% end %>
+</li></p>
 
 <% end %>
 </ul>
