@@ -3,8 +3,10 @@
 <img src="<%= @image.url %>" >
 <%= link_to "Back to Gallery", :back %>
 <p>
-<!-- Even though this is for the comments controller, this form only knows where it came from-->
-<!-- so this has to be defined in the IMAGES controller -->
+<!-- Even though this is for creating a comment, and is passing *to* the *comments* controller, -->
+<!-- this form only knows where it came from, which is the *images* controller-->
+<!-- so the *new* method for this form has to be defined in the *images* controller -->
+<!-- The comments controller will "catch" the output of this form via the create method, and the strong params-->
 <%= form_for [@image, @comment] do |f| %> <!-- associate the comment with an image, uses the array to build the url -->
  <%= render "error_messages", target: @comment %>
  <%= f.label :body %>
