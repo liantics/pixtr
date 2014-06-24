@@ -12,6 +12,7 @@
 
 <% if signed_in? %>
 	<%= button_to "Sign out", :session, method: :delete %> 
+	<%= link_to "Create a new group", [:new, :group] %>
 	
 <% else %>
 

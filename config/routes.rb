@@ -37,4 +37,6 @@ Rails.application.routes.draw do
     resources :comments, only: [:create] #since we already have the form, and new is just for rendering a form, we don't need a "new" route.
   end
 
+  resources :groups, only: [:new, :create, :index] #order of routes doesn't matter
+
 end

@@ -1,0 +1,19 @@
+Add groups capability
+
+Add new, create, and index views for groups
+Add routes for new, create, and index actions
+Add controller and database table for groups
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch lea-groups
+# Changes to be committed:
+#	new file:   ../controllers/groups_controller.rb
+#	new file:   ../models/group.rb
+#	new file:   groups/index.html.erb
+#	new file:   groups/new.html.erb
+#	modified:   layouts/application.html.erb
+#	modified:   ../../config/routes.rb
+#	new file:   ../../db/migrate/20140624140402_create_groups.rb
+#	modified:   ../../db/schema.rb
+#
