@@ -1,5 +1,16 @@
 <h2>Cool Image Number <%= @image.id %></h2>
 
+<% if !current_user.liked_images.include?@image%>
+	<%= button_to "Like this image", [@image, :like ] %>
+<%else%>
+	<%= button_to "Unlike this image", [@image, :like], method: :delete %>
+<%end%>
+
+
+
+<%= pluralize @image.likes.count, "Like" %>
+
+
 <img src="<%= @image.url %>" >
 <%= link_to "Back to Gallery", :back %>
 
@@ -20,6 +31,7 @@
  <%= f.text_area :body %>
  <%= f.submit "submit"%>
 <% end %>
+
 
 
 <ul>

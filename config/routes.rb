@@ -36,12 +36,13 @@ Rails.application.routes.draw do
   resources :images, only: [:show, :edit, :update] do 
     resources :comments, only: [:create] #since we already have the form, and new is just for rendering a form, we don't need a "new" route.
     resources :group_images, only: [:create] 
+    resource :like, only: [:create, :destroy]
   end
 
   resources :groups, only: [:new, :create, :index, :show] do #order of routes doesn't matter
     #changed this to a singular, since there will only ever be ONE instance of a given user in a specific group
     #there will only ever be one group id for this user's membership in the group, so we don't care about the group id
-    resource :group_membership, only: [:create, :destroy] 
+    resource :group_membership, only: [:create, :delete] 
   end
 
   

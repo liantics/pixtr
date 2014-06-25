@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
 
 	has_many :comments, through: :images
 
+	has_many :likes
+	has_many :liked_images, through: :likes, source: :image
+
 	belongs_to :group
 
 
@@ -41,4 +44,11 @@ class User < ActiveRecord::Base
 		groups.destroy(group) 
 	end
 
+	def like_it(image)
+		liked_images << image	
+	end
+
+	def unlike_it(image)
+		liked_images.destroy(image)
+	end
 end
