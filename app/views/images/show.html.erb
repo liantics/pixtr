@@ -3,10 +3,11 @@
 <img src="<%= @image.url %>" >
 <%= link_to "Back to Gallery", :back %>
 
+<!-- Add this image to one or more groups -->
 <%= form_for @image do |form| %>
 <%=form.label "Groups"%>
 <%= form.collection_check_boxes :group_ids, @groups, :id, :name%>
-<%=form.submit "Update groups"%>
+<%=form.submit "Add this image to selected group(s)"%>
 <%end%>
 <p>
 <!-- Even though this is for creating a comment, and is passing *to* the *comments* controller, -->
