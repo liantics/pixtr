@@ -1,18 +1,15 @@
-<h2>Cool Image Number <%= @image.id %></h2>
-
+<h2>Showing Image Number <%= @image.id %></h2>
+<p class="roomy">
 <% if !current_user.liked_images.include?@image%>
 	<%= button_to "Like this image", [@image, :like ] %>
 <%else%>
 	<%= button_to "Unlike this image", [@image, :like], method: :delete %>
-<%end%>
+<%end%></p>
 
 
-
-<%= pluralize @image.likes.count, "Like" %>
-
+<p class="roomy"><%= pluralize @image.likes.count, "Like" %></p>
 
 <img src="<%= @image.url %>" >
-<%= link_to "Back to Gallery", :back %>
 
 <!-- Add this image to one or more groups -->
 <%= form_for @image do |form| %>
@@ -20,19 +17,24 @@
 <%= form.collection_check_boxes :group_ids, @groups, :id, :name%>
 <%=form.submit "Add this image to selected group(s)"%>
 <%end%>
-<p>
+
+
+
 <!-- Even though this is for creating a comment, and is passing *to* the *comments* controller, -->
 <!-- this form only knows where it came from, which is the *images* controller-->
 <!-- so the *new* method for this form has to be defined in the *images* controller -->
 <!-- The comments controller will "catch" the output of this form via the create method, and the strong params-->
-<%= form_for [@image, @comment] do |f| %> <!-- associate the comment with an image, uses the array to build the url -->
+<!-- associate the comment with an image, uses the array to build the url -->
+<p>
+<%= form_for [@image, @comment] do |f| %> 
+
+
+
  <%= render "error_messages", target: @comment %>
- <%= f.label :body %>
+ <%= f.label :body, "Comment on this image:" %>
  <%= f.text_area :body %>
  <%= f.submit "submit"%>
 <% end %>
-
-
 
 <ul>
 <% @comments.each do |comment| %>

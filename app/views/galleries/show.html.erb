@@ -1,5 +1,15 @@
 <h2>Welcome to the <%= @gallery.name %> Gallery</h2>
 <p>Proudly owned by <%= @gallery.user.email %>
+<p>
+	 <% if current_user.id == @gallery.user.id %></p>
+
+	 	<p><%= link_to "Edit gallery", [:edit, @gallery] %></p>
+
+	 	<p><%= link_to "Delete gallery", @gallery, method: :delete %> </p>
+
+  		<p><%= link_to "Add an image", [:new, @gallery, :image]%>	</p> 	
+	 <% end %>
+</p>
 
 <% @gallery.images.each do |image| %>
 
@@ -13,13 +23,3 @@
 		<p>Created at <%= time_ago_in_words image.created_at %> ago</p>
 <% end %>
 
-<p>
-	 <% if current_user.id == @gallery.user.id %></p>
-
-	 	<p><%= link_to "Edit gallery", [:edit, @gallery] %></p>
-
-	 	<p><%= link_to "Delete gallery", @gallery, method: :delete %> </p>
-
-  		<p><%= link_to "Add an image", [:new, @gallery, :image]%>	</p> 	
-	 <% end %>
-</p>
