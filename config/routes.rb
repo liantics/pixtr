@@ -39,7 +39,9 @@ Rails.application.routes.draw do
   end
 
   resources :groups, only: [:new, :create, :index, :show] do #order of routes doesn't matter
-    resources :group_memberships, only: [:create]
+    #changed this to a singular, since there will only ever be ONE instance of a given user in a specific group
+    #there will only ever be one group id for this user's membership in the group, so we don't care about the group id
+    resource :group_membership, only: [:create, :destroy] 
   end
 
   

@@ -4,6 +4,9 @@ class User < ActiveRecord::Base
 
 	has_many :comments, through: :images
 
+	belongs_to :group
+
+
 	#since user and group are not directly connected via either of their tables, we need to 
 	#connect the user with a group by using a "has_many through" relation
 	#via the group memberships, which is a two-step process:
@@ -28,6 +31,14 @@ class User < ActiveRecord::Base
 
 	def member?(group)
 		group_ids.include?(group.id)
+	end
+
+	def join(group)
+		groups << group
+	end
+
+	def leave(group)
+		groups.destroy(group) 
 	end
 
 end

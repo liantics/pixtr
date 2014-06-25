@@ -2,3 +2,6 @@
  
 <%= render @group %>
 
+<% @group.images.each do |image|  %>
+	<img src="<%= image.url %>">
+<%end%>

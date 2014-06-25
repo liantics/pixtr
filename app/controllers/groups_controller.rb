@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
 				user_id: current_user.id, 
 				group_id: @group.id
 				)
-			
+					
 			redirect_to :groups
 
 		else
@@ -29,6 +29,7 @@ class GroupsController < ApplicationController
 
 	def show
 		@group = Group.find(params[:id])
+		@image = @group.images.all
 	end
 
 private
