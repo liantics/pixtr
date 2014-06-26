@@ -35,6 +35,13 @@ gem 'monban'
 # Allows features on heroku such as static asset serving and logging
 gem 'rails_12factor', group: :production
 
+#Allowsfeatures to control images
+gem "paperclip", "~> 4.1"
+
+#Add image storage capabilities on the Amazon AWS cloud
+gem 'aws-sdk'
+
+#
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
