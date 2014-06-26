@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140625194640) do
+ActiveRecord::Schema.define(version: 20140626151531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -83,6 +83,23 @@ ActiveRecord::Schema.define(version: 20140625194640) do
   add_index "likes", ["image_id"], name: "index_likes_on_image_id", using: :btree
   add_index "likes", ["user_id", "image_id"], name: "index_likes_on_user_id_and_image_id", unique: true, using: :btree
   add_index "likes", ["user_id"], name: "index_likes_on_user_id", using: :btree
+
+  create_table "taggings", force: true do |t|
+    t.integer  "image_id",   null: false
+    t.integer  "tag_id",     null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "taggings", ["image_id", "tag_id"], name: "index_taggings_on_image_id_and_tag_id", unique: true, using: :btree
+  add_index "taggings", ["image_id"], name: "index_taggings_on_image_id", using: :btree
+  add_index "taggings", ["tag_id"], name: "index_taggings_on_tag_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.text     "tag_name",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",           null: false

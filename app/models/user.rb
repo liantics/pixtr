@@ -48,7 +48,16 @@ class User < ActiveRecord::Base
 		liked_images << image	
 	end
 
+	#another option for unliking is to create two methods in the user model
+	#instead of one here and one in the images_controller:
+	#the second is the unlike method (see below)
+	def liked?(image)
+		liked_images.include?(image)
+	end
+
 	def unlike_it(image)
 		liked_images.destroy(image)
 	end
+
+
 end

@@ -1,0 +1,3 @@
+save for image show page
+
+<%= f.text_field :tag_list %>
