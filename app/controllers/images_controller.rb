@@ -6,6 +6,7 @@ class ImagesController < ApplicationController
       @groups = Group.all
       @comment = Comment.new
       @comments = @image.comments.recent
+      @image_tags = @image.tags
     end
 
 

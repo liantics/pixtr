@@ -6,8 +6,19 @@
 		<%= button_to "Unlike this image", [@image, :like], method: :delete %>
 	<%end%></div>
 
+<div class="roomy">
+	<% if !@image.tags %>
+		This image has no tags
+	<% else%>
+		Tags: <% @image_tags.each do |tag| %>
+			<%= tag.tag_name %> 
+		<%end%>
+	<%end%>
+</div>
 
-<div class="roomy"><%= pluralize @image.likes.count, "Like" %></div>
+<div class="roomy">
+	<%= pluralize @image.likes.count, "Like" %>
+</div>
 
 	<img src="<%= @image.url %>" >
 
@@ -57,8 +68,5 @@
 		<%= f.text_field :tag_list %>
 		<%= f.submit "Add" %>
 	<% end %>
-
-
-	
 
 </div>

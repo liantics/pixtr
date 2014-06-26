@@ -14,11 +14,11 @@ class Image < ActiveRecord::Base
 
 
 	def tag_list
-	  tags.map { |t| t.tag_name }.join(", ")
+	  tags.map { |t| t.tag_name }.join(',')
 	end
 
 	def tag_list=(new_value)
-	  tag_names = new_value.split(", ")
+	  tag_names = new_value.split(',')
 	  self.tags = tag_names.map { |name| Tag.find_or_create_by(tag_name: name) }
 	  
 	end
